@@ -1,7 +1,8 @@
 #include<iostream>
+#include<Windows.h>
+#include<MMSystem.h>
 #include<string>
 #include<fstream>
-#include<Windows.h>
 #include<ctime>
 #include"Questions.h"
 using namespace std;
@@ -10,6 +11,7 @@ void Welcome();
 void MillionareStart();
 
 void main() {
+	Welcome();
 	ques.List();
 	ques.Getquestions();
 	MillionareStart();
@@ -17,6 +19,7 @@ void main() {
 
 void Welcome()
 {
+	
 	    cout << endl << endl << endl << endl<<endl<<endl;
 	    cout << "                                     $$$$$$                                                                       "<< endl;
 		cout << "                                    $$$$$$$      $$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$$$$$$" << endl;
@@ -145,7 +148,8 @@ void Welcome()
 		cout << "          $$$$$$  										 " << endl;
 		Sleep(500);
 		system("cls");
-
+		
+		
 }
 
 
@@ -168,6 +172,7 @@ void MillionareStart()
 	cout <<"                                                    Who want to be a millionare $ ?"<<endl;
 	cout << endl << endl ;
 	cout << "\t1-Start" << "		\t\t		" << "2-Rules" << "		\t\t		" << "3-EXit" << endl;
+	PlaySound(TEXT("start.wav"), NULL, SND_SYNC);
 	while (true) {
 	   cin >> x;
 	   system("cls");

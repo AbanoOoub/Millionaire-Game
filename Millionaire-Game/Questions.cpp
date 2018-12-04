@@ -83,6 +83,7 @@ void Questions::CallFriend(int num)
 	Sleep(700);
 	cout << ".";
 	Sleep(700);
+	PlaySound(TEXT("callfriend.wav"), NULL, SND_SYNC);
 	cout<<"\t\t\t\t\t\t\t\t\t\t\t\t            "<<nameFriend << " Suggest : "<< v[num].answer[0] << endl;
 
 }
@@ -106,6 +107,7 @@ void Questions::AudienceOpinion(int num)
 	Sleep(700);
 	cout << ".";
 	Sleep(700);
+	PlaySound(TEXT("peopleVoting.wav"), NULL, SND_SYNC);
 	cout <<"\t\t\t\t\t\t\t\t\t\t\t                          Audience choose:" <<v[num].answer[0] << endl;
 
 }
@@ -121,6 +123,7 @@ void Questions::MillionaireQuestions()
 		cout << i + 1 << "-" << v[i].Q << "          " << endl;
 		cout << v[i].a1 << "\t   \t" << v[i].a2 << endl
 			<< v[i].a3 << "\t   \t" << v[i].a4 << endl;
+		PlaySound(TEXT("next.wav"), NULL, SND_SYNC);
 
 		if (gotohelp <= 2)
 		{
@@ -153,7 +156,7 @@ void Questions::MillionaireQuestions()
 			choose = toupper(choose);
 			if (choose == v[i].answer[0]) {          // correct ans
 				cout << "\t \t \t \t \t       congrats, you have " << million.front() << "$" << endl;
-				cout << "\a";          //beb sound
+				PlaySound(TEXT("rightAns.wav"), NULL, SND_SYNC);
 				if (i < 14) {                             // not to appear in last qus
 					if (!ContinueVSwithdraw())
 						break;
@@ -185,7 +188,9 @@ void Questions::MillionaireQuestions()
 					cout << "\t\t\t\t\t          \\                                     //			 	" << endl;
 					cout << "\t\t\t\t\t            |____--_____--_________--____--_____|				    " << endl << endl;
 					cout << "\t\t\t\t\t                    * Congratulations *                           " << endl;
+					PlaySound(TEXT("million.wav"), NULL, SND_SYNC);
 				}
+				
 				million.pop_front();
 				count++;
 			}
@@ -197,13 +202,13 @@ void Questions::MillionaireQuestions()
 					cout << "   \t\t                               Sorry Wrong Answer!          " << endl;
 					cout << "   \t\t                                  You have 0 $              " << endl;
 					cout << "   \t\t                              Thank you for playing ..        " << endl;
-
+					PlaySound(TEXT("wrongAns.wav"), NULL, SND_SYNC);
 				}
 
 				else if (count == 5) {       // lose at 1000$
 					system("cls");
 					cout << endl << endl << endl << endl << endl << endl;
-					cout << "                                                              Sorry Wrong Answer!                        " << endl;
+					cout << "                                                         Sorry Wrong Answer!                        " << endl;
 					cout << "                             $$$$$$                                                                       " << endl;
 					cout << "                            $$$$$$$      $$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$$$" << endl;
 					cout << "                         $$$$$$$$$$      $$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$$$" << endl;
@@ -218,11 +223,12 @@ void Questions::MillionaireQuestions()
 					cout << "                             $$$$$$      $$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$$$" << endl;
 					cout << "                             $$$$$$																	 " << endl;
 					cout << "                                                           Thank you for playing                      " << endl;
+					PlaySound(TEXT("million.wav"), NULL, SND_SYNC);
 				}
 				else if (count < 10) {
 					system("cls");
 					cout << endl << endl << endl << endl << endl << endl;
-					cout << "                                                              Sorry Wrong Answer!                        " << endl;
+					cout << "                                                         Sorry Wrong Answer!                        " << endl;
 					cout << "                             $$$$$$                                                                       " << endl;
 					cout << "                            $$$$$$$      $$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$$$" << endl;
 					cout << "                         $$$$$$$$$$      $$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$$$" << endl;
@@ -237,12 +243,13 @@ void Questions::MillionaireQuestions()
 					cout << "                             $$$$$$      $$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$$$" << endl;
 					cout << "                             $$$$$$																	 " << endl;
 					cout << "                                                           Thank you for playing                      " << endl;
+					PlaySound(TEXT("million.wav"), NULL, SND_SYNC);
 
 				}
 				else if (count == 10) {
 					system("cls");
 					cout << endl << endl << endl << endl << endl << endl;
-					cout << "                                                                          Sorry Wrong Answer!                            " << endl;
+					cout << "                                                                         Sorry Wrong Answer!                            " << endl;
 					cout << "                   $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$                                                                  " << endl;
 					cout << "                   $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$     $$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$$$" << endl;
 					cout << "                              $$$$$$$ $$$$$$$$$$$$$$$$$$     $$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$$$" << endl;
@@ -258,11 +265,12 @@ void Questions::MillionaireQuestions()
 					cout << "                   $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$									                               " << endl;
 					cout << "                                                                        Thank you for playing ..                               " << endl;
 
+					PlaySound(TEXT("million.wav"), NULL, SND_SYNC);
 				}
 				else if (count < 15) {
 					system("cls");
 					cout << endl << endl << endl << endl << endl << endl;
-					cout << "                                                                          Sorry Wrong Answer!                            " << endl;
+					cout << "                                                                        Sorry Wrong Answer!                            " << endl;
 					cout << "                   $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$                                                                  " << endl;
 					cout << "                   $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$     $$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$$$" << endl;
 					cout << "                              $$$$$$$ $$$$$$$$$$$$$$$$$$     $$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$$$" << endl;
@@ -278,7 +286,7 @@ void Questions::MillionaireQuestions()
 					cout << "                   $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$									                               " << endl;
 					cout << "                                                                        Thank you for playing ..                               " << endl;
 
-
+					PlaySound(TEXT("million.wav"), NULL, SND_SYNC);
 				}
 				break;
 			}
@@ -310,6 +318,7 @@ void Questions::help(int num)
 			if (test == 'f' || test == 'F'&& fivefive < 1)
 			{
 				FiftyFifty(num);
+				PlaySound(TEXT("fifty.wav"), NULL, SND_SYNC);
 				fivefive++;
 				break;
 			}
