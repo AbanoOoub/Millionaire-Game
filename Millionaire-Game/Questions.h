@@ -16,8 +16,7 @@ public:
 	void AudienceOpinion(int num);    //   u
 	void MillionaireQuestions();
 	void help(int num);
-	bool ContinueVSwithdraw();
+	bool ContinueVSwithdrawal();
 	void List();
 	void Getquestions();
 	};
-//static vector<Questions>v;

@@ -85,6 +85,7 @@ void Questions::CallFriend(int num)
 	Sleep(700);
 	PlaySound(TEXT("callfriend.wav"), NULL, SND_SYNC);
 	cout<<"\t\t\t\t\t\t\t\t\t\t\t\t            "<<nameFriend << " Suggest : "<< v[num].answer[0] << endl;
+	PlaySound(TEXT("Done.wav"), NULL, SND_SYNC);
 
 }
 
@@ -109,15 +110,18 @@ void Questions::AudienceOpinion(int num)
 	Sleep(700);
 	PlaySound(TEXT("peopleVoting.wav"), NULL, SND_SYNC);
 	cout <<"\t\t\t\t\t\t\t\t\t\t\t                          Audience choose:" <<v[num].answer[0] << endl;
+	PlaySound(TEXT("Done.wav"), NULL, SND_SYNC);
+
+	
 
 }
 
 void Questions::MillionaireQuestions()
 {
-
 	int count = 0;         // wich qus 
 	int gotohelp = 0;     //gotohelp to take 3 help only
 	char choose, ch;
+	bool out=false;
 	for (int i = 0; i < v.size(); i++) {
 		system("cls");
 		cout << i + 1 << "-" << v[i].Q << "          " << endl;
@@ -125,175 +129,208 @@ void Questions::MillionaireQuestions()
 			<< v[i].a3 << "\t   \t" << v[i].a4 << endl;
 		PlaySound(TEXT("next.wav"), NULL, SND_SYNC);
 
+		
 		if (gotohelp <= 2)
 		{
-			cout << endl << "\t\t\t\t             ^_^  IF YOU Want Help Parss Y  Else Press  N  ^_^" << endl;
-			while (true) {
-				cin >> ch;
-				if (ch == 'y' || ch == 'Y')
-				{
+				cout << endl << "\t\t\t\t             ^_^  IF YOU Want Help Parss Y  else Press  N  ^_^" << endl;
+				while (true) {
+					cin >> ch;
+					if (ch == 'y' || ch == 'Y')
+					{
+						help(i);
+						gotohelp++;
+						if (gotohelp <= 2)
+							cout << endl << "\t\t\t\t        ^_^  IF YOU Want more Help again Parss Y  else Press  N  ^_^" << endl;
+						else
+							break;
+					}
+					else if (ch == 'n' || ch == 'N')
+					{
+						system("cls");
+						cout << i + 1 << "-" << v[i].Q << "          " << endl;
+						cout << v[i].a1 << "\t   \t" << v[i].a2 << endl
+							<< v[i].a3 << "\t   \t" << v[i].a4 << endl;
+						break;
+					}
+					else {
+						cout << "\t\t\t\t\t              You should enter Y OR N" << endl;
+						PlaySound(TEXT("Buzz .wav"), NULL, SND_SYNC);
+					}
+		     	}
+		    }
 
-					help(i);
-					gotohelp++;
-					break;
-				}
-				else if (ch == 'n' || ch == 'N')
-				{
-					system("cls");
-					cout << i + 1 << "-" << v[i].Q << "          " << endl;
-					cout << v[i].a1 << "\t   \t" << v[i].a2 << endl
-						<< v[i].a3 << "\t   \t" << v[i].a4 << endl;
-					break;
-				}
-				else
-					cout << "\t\t\t\t\t              You should enter Y OR N" << endl;
-
-			}
-		}
-		
-		cout << endl <<"Your Answer Is :  ";
+		cout << endl << "Your Answer Is :  ";
+		while (true) {
 			cin >> choose;
 			choose = toupper(choose);
-			if (choose == v[i].answer[0]) {          // correct ans
-				cout << "\t \t \t \t \t       congrats, you have " << million.front() << "$" << endl;
-				PlaySound(TEXT("rightAns.wav"), NULL, SND_SYNC);
-				if (i < 14) {                             // not to appear in last qus
-					if (!ContinueVSwithdraw())
+			if (choose == 'A' || choose == 'B' || choose == 'C' || choose == 'D') {
+				if (choose == v[i].answer[0]) {          // correct ans
+					system("cls");
+					system("color F2");
+					cout << "\t \t \t \t \t       congrats, you have " << million.front() << "$" << endl;
+					PlaySound(TEXT("rightAns.wav"), NULL, SND_SYNC);
+					if (i < 14) {                             // not to appear in last qus
+						system("cls");
+						system("color F0");
+						if (!ContinueVSwithdrawal()) {
+							out = true;
+							PlaySound(TEXT("million.wav"), NULL, SND_SYNC);
+							break;
+						}
+					}
+					else
+					{      // cross all rounds right $$$
+						system("cls");
+						system("color FA");
+						cout << endl << endl << endl << endl;;
+						cout << "\t\t\t\t\t                  You are a millionare $                             " << endl;
+						cout << "\t\t\t\t\t              __________________________________                   " << endl;
+						cout << "\t\t\t\t\t             |                                  |    				" << endl;
+						cout << "\t\t\t\t\t             |                                  |					" << endl;
+						cout << "\t\t\t\t\t             |                                  |					" << endl;
+						cout << "\t\t\t\t\t             |                                  |					" << endl;
+						cout << "\t\t\t\t\t             |                                  |					" << endl;
+						cout << "\t\t\t\t\t             |                                  |					" << endl;
+						cout << "\t\t\t\t\t             |----------------------------------|					" << endl;
+						cout << "\t\t\t\t\t            ******     *****  **  *****     ******				    " << endl;
+						cout << "\t\t\t\t\t        ***                                        ***			    " << endl;
+						cout << "\t\t\t\t\t         ********************************************			    " << endl;
+						cout << "\t\t\t\t\t       /         *                         *         \				" << endl;
+						cout << "\t\t\t\t\t       |        ***                       ***        |       	    " << endl;
+						cout << "\t\t\t\t\t    (  |       *****                     *****       |  )	 	    " << endl;
+						cout << "\t\t\t\t\t  (    |        ***                       ***        |    )  		" << endl;
+						cout << "\t\t\t\t\t    (  |         *                         *         |  )	           " << endl;
+						cout << "\t\t\t\t\t       |                     ^^                      |			    " << endl;
+						cout << "\t\t\t\t\t       |                ^^ ^^  ^^  ^^                |			    " << endl;
+						cout << "\t\t\t\t\t        \\          \__________________/           //				" << endl;
+						cout << "\t\t\t\t\t         \\                                       //				" << endl;
+						cout << "\t\t\t\t\t          \\                                     //			 	" << endl;
+						cout << "\t\t\t\t\t            |____--_____--_________--____--_____|				    " << endl << endl;
+						cout << "\t\t\t\t\t                    * Congratulations *                           " << endl;
+						PlaySound(TEXT("million.wav"), NULL, SND_SYNC);
+					}
+
+					million.pop_front();
+					count++;
+					break;
+				}
+
+				else            // lose ....
+				{
+					system("cls");
+					system("color FC");
+					if (count < 5) {                //lose before 1000$
+						cout << "   \t\t                               Sorry Wrong Answer!          " << endl;
+						cout << "   \t\t                                  You have 0 $              " << endl;
+						cout << "   \t\t                              Thank you for playing ..        " << endl;
+						PlaySound(TEXT("wrongAns.wav"), NULL, SND_SYNC);
+						out = true;
 						break;
+					}
+
+					else if (count == 5) {       // lose at 1000$
+						system("cls");
+						system("color F2");
+						cout << endl << endl << endl << endl << endl << endl;
+						cout << "                                                         Sorry Wrong Answer!                        " << endl;
+						cout << "                             $$$$$$                                                                       " << endl;
+						cout << "                            $$$$$$$      $$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$$$" << endl;
+						cout << "                         $$$$$$$$$$      $$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$$$" << endl;
+						cout << "                        $$$$$$$$$$$      $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
+						cout << "                          $$$$$$$$$      $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
+						cout << "                             $$$$$$      $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
+						cout << "                             $$$$$$      $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
+						cout << "                             $$$$$$      $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
+						cout << "                             $$$$$$      $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
+						cout << "                             $$$$$$      $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
+						cout << "                             $$$$$$      $$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$$$" << endl;
+						cout << "                             $$$$$$      $$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$$$" << endl;
+						cout << "                             $$$$$$																	 " << endl;
+						cout << "                                                           Thank you for playing                      " << endl;
+						PlaySound(TEXT("million.wav"), NULL, SND_SYNC);
+						out = true;
+						break;
+					}
+					else if (count < 10) {
+						system("cls");
+						system("color F2");
+						cout << endl << endl << endl << endl << endl << endl;
+						cout << "                                                         Sorry Wrong Answer!                        " << endl;
+						cout << "                             $$$$$$                                                                       " << endl;
+						cout << "                            $$$$$$$      $$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$$$" << endl;
+						cout << "                         $$$$$$$$$$      $$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$$$" << endl;
+						cout << "                        $$$$$$$$$$$      $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
+						cout << "                          $$$$$$$$$      $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
+						cout << "                             $$$$$$      $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
+						cout << "                             $$$$$$      $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
+						cout << "                             $$$$$$      $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
+						cout << "                             $$$$$$      $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
+						cout << "                             $$$$$$      $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
+						cout << "                             $$$$$$      $$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$$$" << endl;
+						cout << "                             $$$$$$      $$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$$$" << endl;
+						cout << "                             $$$$$$																	 " << endl;
+						cout << "                                                           Thank you for playing                      " << endl;
+						PlaySound(TEXT("million.wav"), NULL, SND_SYNC);
+						out = true;
+						break;
+					}
+					else if (count == 10) {
+						system("cls");
+						system("color F2");
+						cout << endl << endl << endl << endl << endl << endl;
+						cout << "                                                                         Sorry Wrong Answer!                            " << endl;
+						cout << "                   $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$                                                                  " << endl;
+						cout << "                   $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$     $$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$$$" << endl;
+						cout << "                              $$$$$$$ $$$$$$$$$$$$$$$$$$     $$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$$$" << endl;
+						cout << "                              $$$$$$$            $$$$$$$     $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
+						cout << "                              $$$$$$$            $$$$$$$     $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
+						cout << "                              $$$$$$$            $$$$$$$     $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
+						cout << "                   $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$     $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
+						cout << "                   $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$     $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
+						cout << "                              $$$$$$$ $$$$$$                 $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
+						cout << "                              $$$$$$$ $$$$$$                 $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
+						cout << "                              $$$$$$$ $$$$$$$$$$$$$$$$$$     $$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$$$" << endl;
+						cout << "                   $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$     $$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$$$" << endl;
+						cout << "                   $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$									                               " << endl;
+						cout << "                                                                        Thank you for playing ..                               " << endl;
+						PlaySound(TEXT("million.wav"), NULL, SND_SYNC);
+						out = true;
+						break;
+					}
+					else if (count < 15) {
+						system("cls");
+						system("color F2");
+						cout << endl << endl << endl << endl << endl << endl;
+						cout << "                                                                        Sorry Wrong Answer!                            " << endl;
+						cout << "                   $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$                                                                  " << endl;
+						cout << "                   $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$     $$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$$$" << endl;
+						cout << "                              $$$$$$$ $$$$$$$$$$$$$$$$$$     $$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$$$" << endl;
+						cout << "                              $$$$$$$            $$$$$$$     $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
+						cout << "                              $$$$$$$            $$$$$$$     $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
+						cout << "                              $$$$$$$            $$$$$$$     $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
+						cout << "                   $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$     $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
+						cout << "                   $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$     $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
+						cout << "                              $$$$$$$ $$$$$$                 $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
+						cout << "                              $$$$$$$ $$$$$$                 $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
+						cout << "                              $$$$$$$ $$$$$$$$$$$$$$$$$$     $$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$$$" << endl;
+						cout << "                   $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$     $$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$$$" << endl;
+						cout << "                   $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$									                               " << endl;
+						cout << "                                                                        Thank you for playing ..                               " << endl;
+						PlaySound(TEXT("million.wav"), NULL, SND_SYNC);
+						out = true;
+						break;
+					}
 				}
-				else
-				{      // cross all rounds right $$$
-					cout << endl << endl << endl << endl;;
-					cout << "\t\t\t\t\t                  You are a millionare $                             " << endl;
-					cout << "\t\t\t\t\t              __________________________________                   " << endl;
-					cout << "\t\t\t\t\t             |                                  |    				" << endl;
-					cout << "\t\t\t\t\t             |                                  |					" << endl;
-					cout << "\t\t\t\t\t             |                                  |					" << endl;
-					cout << "\t\t\t\t\t             |                                  |					" << endl;
-					cout << "\t\t\t\t\t             |                                  |					" << endl;
-					cout << "\t\t\t\t\t             |                                  |					" << endl;
-					cout << "\t\t\t\t\t             |----------------------------------|					" << endl;
-					cout << "\t\t\t\t\t            ******     *****  **  *****     ******				    " << endl;
-					cout << "\t\t\t\t\t        ***                                        ***			    " << endl;
-					cout << "\t\t\t\t\t         ********************************************			    " << endl;
-					cout << "\t\t\t\t\t       /         *                         *         \				" << endl;
-					cout << "\t\t\t\t\t       |        ***                       ***        |       	    " << endl;
-					cout << "\t\t\t\t\t    (  |       *****                     *****       |  )	 	    " << endl;
-					cout << "\t\t\t\t\t  (    |        ***                       ***        |    )  		" << endl;
-					cout << "\t\t\t\t\t    (  |         *                         *         |  )	           " << endl;
-					cout << "\t\t\t\t\t       |                     ^^                      |			    " << endl;
-					cout << "\t\t\t\t\t       |                ^^ ^^  ^^  ^^                |			    " << endl;
-					cout << "\t\t\t\t\t        \\          \__________________/           //				" << endl;
-					cout << "\t\t\t\t\t         \\                                       //				" << endl;
-					cout << "\t\t\t\t\t          \\                                     //			 	" << endl;
-					cout << "\t\t\t\t\t            |____--_____--_________--____--_____|				    " << endl << endl;
-					cout << "\t\t\t\t\t                    * Congratulations *                           " << endl;
-					PlaySound(TEXT("million.wav"), NULL, SND_SYNC);
-				}
-				
-				million.pop_front();
-				count++;
 			}
-			
-			else            // lose ....
-			{
-				system("cls");
-				if (count < 5) {    //lose before 1000$
-					cout << "   \t\t                               Sorry Wrong Answer!          " << endl;
-					cout << "   \t\t                                  You have 0 $              " << endl;
-					cout << "   \t\t                              Thank you for playing ..        " << endl;
-					PlaySound(TEXT("wrongAns.wav"), NULL, SND_SYNC);
-				}
-
-				else if (count == 5) {       // lose at 1000$
-					system("cls");
-					cout << endl << endl << endl << endl << endl << endl;
-					cout << "                                                         Sorry Wrong Answer!                        " << endl;
-					cout << "                             $$$$$$                                                                       " << endl;
-					cout << "                            $$$$$$$      $$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$$$" << endl;
-					cout << "                         $$$$$$$$$$      $$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$$$" << endl;
-					cout << "                        $$$$$$$$$$$      $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
-					cout << "                          $$$$$$$$$      $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
-					cout << "                             $$$$$$      $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
-					cout << "                             $$$$$$      $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
-					cout << "                             $$$$$$      $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
-					cout << "                             $$$$$$      $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
-					cout << "                             $$$$$$      $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
-					cout << "                             $$$$$$      $$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$$$" << endl;
-					cout << "                             $$$$$$      $$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$$$" << endl;
-					cout << "                             $$$$$$																	 " << endl;
-					cout << "                                                           Thank you for playing                      " << endl;
-					PlaySound(TEXT("million.wav"), NULL, SND_SYNC);
-				}
-				else if (count < 10) {
-					system("cls");
-					cout << endl << endl << endl << endl << endl << endl;
-					cout << "                                                         Sorry Wrong Answer!                        " << endl;
-					cout << "                             $$$$$$                                                                       " << endl;
-					cout << "                            $$$$$$$      $$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$$$" << endl;
-					cout << "                         $$$$$$$$$$      $$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$$$" << endl;
-					cout << "                        $$$$$$$$$$$      $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
-					cout << "                          $$$$$$$$$      $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
-					cout << "                             $$$$$$      $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
-					cout << "                             $$$$$$      $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
-					cout << "                             $$$$$$      $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
-					cout << "                             $$$$$$      $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
-					cout << "                             $$$$$$      $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
-					cout << "                             $$$$$$      $$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$$$" << endl;
-					cout << "                             $$$$$$      $$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$$$" << endl;
-					cout << "                             $$$$$$																	 " << endl;
-					cout << "                                                           Thank you for playing                      " << endl;
-					PlaySound(TEXT("million.wav"), NULL, SND_SYNC);
-
-				}
-				else if (count == 10) {
-					system("cls");
-					cout << endl << endl << endl << endl << endl << endl;
-					cout << "                                                                         Sorry Wrong Answer!                            " << endl;
-					cout << "                   $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$                                                                  " << endl;
-					cout << "                   $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$     $$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$$$" << endl;
-					cout << "                              $$$$$$$ $$$$$$$$$$$$$$$$$$     $$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$$$" << endl;
-					cout << "                              $$$$$$$            $$$$$$$     $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
-					cout << "                              $$$$$$$            $$$$$$$     $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
-					cout << "                              $$$$$$$            $$$$$$$     $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
-					cout << "                   $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$     $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
-					cout << "                   $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$     $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
-					cout << "                              $$$$$$$ $$$$$$                 $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
-					cout << "                              $$$$$$$ $$$$$$                 $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
-					cout << "                              $$$$$$$ $$$$$$$$$$$$$$$$$$     $$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$$$" << endl;
-					cout << "                   $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$     $$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$$$" << endl;
-					cout << "                   $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$									                               " << endl;
-					cout << "                                                                        Thank you for playing ..                               " << endl;
-
-					PlaySound(TEXT("million.wav"), NULL, SND_SYNC);
-				}
-				else if (count < 15) {
-					system("cls");
-					cout << endl << endl << endl << endl << endl << endl;
-					cout << "                                                                        Sorry Wrong Answer!                            " << endl;
-					cout << "                   $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$                                                                  " << endl;
-					cout << "                   $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$     $$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$$$" << endl;
-					cout << "                              $$$$$$$ $$$$$$$$$$$$$$$$$$     $$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$$$" << endl;
-					cout << "                              $$$$$$$            $$$$$$$     $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
-					cout << "                              $$$$$$$            $$$$$$$     $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
-					cout << "                              $$$$$$$            $$$$$$$     $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
-					cout << "                   $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$     $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
-					cout << "                   $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$     $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
-					cout << "                              $$$$$$$ $$$$$$                 $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
-					cout << "                              $$$$$$$ $$$$$$                 $$$$$        $$$$$    $$$$$        $$$$$   $$$$$        $$$$$" << endl;
-					cout << "                              $$$$$$$ $$$$$$$$$$$$$$$$$$     $$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$$$" << endl;
-					cout << "                   $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$     $$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$$$" << endl;
-					cout << "                   $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$									                               " << endl;
-					cout << "                                                                        Thank you for playing ..                               " << endl;
-
-					PlaySound(TEXT("million.wav"), NULL, SND_SYNC);
-				}
-				break;
+			else {
+				cout << "You should enter A or B or C or D !" << endl;
+				PlaySound(TEXT("Buzz .wav"), NULL, SND_SYNC);
 			}
 		}
-	}
-
-
+		if(out)
+			break; 
+     }
+}
 void Questions::help(int num)
 {
 	if (toloop <= 3) {
@@ -301,19 +338,20 @@ void Questions::help(int num)
 			cout << "\n\n \t\t ";
 			if (fivefive != 1)
 			{
-				cout << "   ^_^  Press 'f' TO  50/50 OR ";
+				cout << "   ^_^  Press 'F' TO  50/50 ^_^ ";
 
 			}
 			if (calFr != 1)
 			{
-				cout << " Press 'p' TO  Call Frind  OR";
+				cout << " ^_^ Press 'P' TO  Call Frind ^_^";
 			}
 			if (peopleChoose != 1)
 			{
 
-				cout << " Press 'u' To  AudienceOpinion  ^_^ " << endl;
+				cout << " ^_^ Press 'U' To  AudienceOpinion  ^_^ ";
 
 			}
+			cout << endl;
 			cin >>test;
 			if (test == 'f' || test == 'F'&& fivefive < 1)
 			{
@@ -337,28 +375,39 @@ void Questions::help(int num)
 
 			else {
 
-				cout << "               Sorry Wrong Choose \n     ";
+				cout << "\t\t\t\t\t\t\t    Sorry Wrong choose !  "<<endl;
+				PlaySound(TEXT("Buzz .wav"), NULL, SND_SYNC);
+
 			}
 		}
 		toloop++;
 	}
 }
 
-bool Questions::ContinueVSwithdraw()
+bool Questions::ContinueVSwithdrawal()
 {
 	cout << endl << endl << endl;
-	cout << "\t\t\t\t\t  Do you want to continue OR withdraw !" << endl;
+	cout << "\t\t\t\t\t  Do you want to continue OR withdrawal !" << endl;
 	cout << "\t\t\t\t\t Continue press '+' , Withdraw press '-'" << endl;
 	char x;
-	cin >> x;
-	if (x == '+') {
-		return true;
-	}
-	else if (x == '-') {
-		system("cls");
-		cout << "    \t\t                         congratulations, you have " << million.front() << "$" << endl;
-		cout << "      \t\t                           Thank you for playing ..         " << endl;
-		return false;
+	while (true) {
+		cin >> x;
+		if (x == '+' || x == '-') {
+			if (x == '+') {
+				return true;
+			}
+			else if (x == '-') {
+				system("cls");
+				system("color F2");
+				cout << "    \t\t                         congratulations, you have " << million.front() << "$" << endl;
+				cout << "      \t\t                           Thank you for playing ..         " << endl;
+				return false;
+			}
+		}
+		else {
+			cout << "\t\t\t\   you should enter '+' to continue OR '-' to withdrawal !" << endl;
+			PlaySound(TEXT("Buzz .wav"), NULL, SND_SYNC);
+		}
 	}
 }
 
@@ -383,6 +432,7 @@ void Questions::List()
 
 void Questions::Getquestions()
 {
+	
 	ifstream file;
 	string s;
 	int x, count1, count2;
