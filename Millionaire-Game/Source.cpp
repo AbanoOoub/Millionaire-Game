@@ -11,7 +11,7 @@ Questions ques;
 void Welcome();
 void MillionareStart();
 void main() {
-	//Welcome();
+	Welcome();
 	ques.List();
 	ques.Getquestions();
 	MillionareStart();
@@ -20,7 +20,7 @@ void main() {
 
 void Welcome()
 {
-	    system("color FA");
+	    system("color F2");
 	    cout << endl << endl << endl << endl<<endl<<endl;
 	    cout << "                                     $$$$$$                                                                       "<< endl;
 		cout << "                                    $$$$$$$      $$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$$$$$$" << endl;
@@ -171,21 +171,21 @@ void MillionareStart()
 		cout << "                                   *************    ***      ***    ****        ****    **************       "<<endl;
 		
 		
-	int x;
+	char x;
 	cout << endl << endl;
     cout <<"                                                    Who want to be a millionare $ ?"<<endl;
 	cout << endl << endl ;
 	cout << "\t1-Start" << "		\t\t		" << "2-Rules" << "		\t\t		" << "3-EXit" << endl;
+	cout << "choose : ";
 	PlaySound(TEXT("start.wav"), NULL, SND_SYNC);
-	while (true) {
 		cin >> x;
-		if (x == 1 || x == 2 || x == 3) {
-			system("cls");
-			if (x == 1) {           //start the game
+	while (true) {
+		if (x == '1' || x == '2' || x == '3') {
+			if (x == '1') {           //start the game
 				ques.MillionaireQuestions();
 				break;
 			}
-			else if (x == 2) {
+			else if (x == '2') {
 				system("color FC");   // F white , C red 
 				system("cls");
 				cout << "1.Play individually" << endl;
@@ -215,12 +215,21 @@ void MillionareStart()
 					<< endl << "and ask them if they know the answer to the question,press( P or p ) to use it." << endl;
 				cout << endl;
 				cout << "                                                      Good Luck" << endl;
-				cout << "choose!:" << endl;
 				cout << "1-Start" << "				" << "3-EXit" << endl;
-
+				cout << "choose : ";
+				while (true) {
+					cin >> x;
+					if (x == '1' || x == '3') {
+						break;
+					}
+					else
+					{
+						cout << "You should enter '1' or '3' !" << endl;
+						PlaySound(TEXT("Buzz .wav"), NULL, SND_SYNC);
+					}
+				}
 			}
-
-			else if (x == 3) {
+			else if (x == '3') {
 				system("color F0");
 				cout << endl << endl << endl;
 				system("cls");
@@ -229,10 +238,13 @@ void MillionareStart()
 			}
 
 		}
-		else
-			cout << "You should enter 1 or 2 or 3 !" << endl;
-	}
+		else {
+			cout << "You should enter '1' or '2' or '3' !" << endl;
+			PlaySound(TEXT("Buzz .wav"), NULL, SND_SYNC);
+			cin >> x;
+		}
 
+	}
 }
 
 

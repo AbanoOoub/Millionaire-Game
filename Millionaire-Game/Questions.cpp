@@ -123,6 +123,7 @@ void Questions::MillionaireQuestions()
 	char choose, ch;
 	bool out=false;
 	for (int i = 0; i < v.size(); i++) {
+		system("color FA");
 		system("cls");
 		cout << i + 1 << "-" << v[i].Q << "          " << endl;
 		cout << v[i].a1 << "\t   \t" << v[i].a2 << endl
@@ -132,15 +133,19 @@ void Questions::MillionaireQuestions()
 		
 		if (gotohelp <= 2)
 		{
-				cout << endl << "\t\t\t\t             ^_^  IF YOU Want Help Parss Y  else Press  N  ^_^" << endl;
+				cout << endl << "\t\t\t\t             ^_^  IF YOU Want Help Parss 'Y' else Press 'N'  ^_^" << endl;
+				PlaySound(TEXT("help.wav"), NULL, SND_SYNC);
+
 				while (true) {
 					cin >> ch;
 					if (ch == 'y' || ch == 'Y')
 					{
 						help(i);
 						gotohelp++;
-						if (gotohelp <= 2)
-							cout << endl << "\t\t\t\t        ^_^  IF YOU Want more Help again Parss Y  else Press  N  ^_^" << endl;
+						if (gotohelp <= 2) {
+							cout << endl << "\t\t\t\t        ^_^  IF YOU Want more Help again Parss 'Y' else Press 'N'  ^_^" << endl;
+							PlaySound(TEXT("help.wav"), NULL, SND_SYNC);
+						}
 						else
 							break;
 					}
@@ -164,7 +169,7 @@ void Questions::MillionaireQuestions()
 			cin >> choose;
 			choose = toupper(choose);
 			if (choose == 'A' || choose == 'B' || choose == 'C' || choose == 'D') {
-				if (choose == v[i].answer[0]) {          // correct ans
+				if (choose == v[i].answer[0]) {               // correct ans
 					system("cls");
 					system("color F2");
 					cout << "\t \t \t \t \t       congrats, you have " << million.front() << "$" << endl;
@@ -219,7 +224,7 @@ void Questions::MillionaireQuestions()
 				{
 					system("cls");
 					system("color FC");
-					if (count < 5) {                //lose before 1000$
+					if (count < 5) {                                                    //lose before 1000$
 						cout << "   \t\t                               Sorry Wrong Answer!          " << endl;
 						cout << "   \t\t                                  You have 0 $              " << endl;
 						cout << "   \t\t                              Thank you for playing ..        " << endl;
@@ -352,6 +357,8 @@ void Questions::help(int num)
 
 			}
 			cout << endl;
+			PlaySound(TEXT("help.wav"), NULL, SND_SYNC);
+
 			cin >>test;
 			if (test == 'f' || test == 'F'&& fivefive < 1)
 			{
