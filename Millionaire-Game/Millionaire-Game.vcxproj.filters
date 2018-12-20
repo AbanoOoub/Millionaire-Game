@@ -31,10 +31,10 @@
     <Text Include="Easyquestions.txt">
       <Filter>Resource Files</Filter>
     </Text>
-    <Text Include="Mediumquestions.txt">
+    <Text Include="Hardquestions.txt">
       <Filter>Resource Files</Filter>
     </Text>
-    <Text Include="Hardquestions.txt">
+    <Text Include="Mediumquestions.txt">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>

@@ -1,21 +1,21 @@
 #include<iostream>
-#include<Windows.h>
-#include<MMSystem.h>
+#include<Windows.h>           
+#include<MMSystem.h>         // sound
 #include<string>
 #include<fstream>
 #include<ctime>
 #include"Questions.h"
-#include <conio.h>
 using namespace std;
 Questions ques;
 void Welcome();
 void MillionareStart();
+void text_animation(char a[100]);
 void main() {
-	Welcome();
-	ques.List();
+	//Welcome();
+	//ques.List();
 	ques.Getquestions();
 	MillionareStart();
-
+	
 }
 
 void Welcome()
@@ -173,20 +173,21 @@ void MillionareStart()
 		
 	char x;
 	cout << endl << endl;
-    cout <<"                                                    Who want to be a millionare $ ?"<<endl;
+    cout <<"                                                    ";
+	text_animation("Who Wants to be a millionaire $ ?");  
 	cout << endl << endl ;
-	cout << "\t1-Start" << "		\t\t		" << "2-Rules" << "		\t\t		" << "3-EXit" << endl;
-	cout << "choose : ";
 	PlaySound(TEXT("start.wav"), NULL, SND_SYNC);
+	cout << "\t\t\t 1-Start" << "	\t\t	" << "2-Rules" << "		\t\t	" << "3-EXit" << endl;
+	cout << endl <<endl << endl  <<"choose : ";
 		cin >> x;
 	while (true) {
 		if (x == '1' || x == '2' || x == '3') {
-			if (x == '1') {           //start the game
+			if (x == '1') {                                   //start the game
 				ques.MillionaireQuestions();
 				break;
 			}
 			else if (x == '2') {
-				system("color FC");   // F white , C red 
+				system("color FC");   // F white , C red  
 				system("cls");
 				cout << "1.Play individually" << endl;
 				cout << "2.There are 15 questions in total and each question is worth a specific amount of money." << endl;
@@ -215,7 +216,7 @@ void MillionareStart()
 					<< endl << "and ask them if they know the answer to the question,press( P or p ) to use it." << endl;
 				cout << endl;
 				cout << "                                                      Good Luck" << endl;
-				cout << "1-Start" << "				" << "3-EXit" << endl;
+				cout << "\t\t\t\t  1-Start" << "			    	" << "3-EXit" << endl;
 				cout << "choose : ";
 				while (true) {
 					cin >> x;
@@ -233,7 +234,9 @@ void MillionareStart()
 				system("color F0");
 				cout << endl << endl << endl;
 				system("cls");
-				cout << "                                                         Thank You ^-^             " << endl;
+				cout << "                                                         ";
+				text_animation("Thank You ^-^");
+				cout << endl;
 				break;
 			}
 
@@ -247,6 +250,14 @@ void MillionareStart()
 	}
 }
 
+void text_animation(char a[100]) {
+	
+	for (int i = 0; a[i] != '\0'; ++i) {
+		    Sleep(100);
+			cout << a[i];
+	}
+
+}
 
 
 

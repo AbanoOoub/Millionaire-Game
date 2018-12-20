@@ -28,8 +28,9 @@ void Questions::FiftyFifty(int num)
 	cout << num + 1 << "-" << v[num].Q << "          " << endl;
 	//check the right answer ...
 	// delete 2 from wrong ...
-	if (v[num].answer[0] == 'A')
+	/*if (v[num].answer[0] == 'A')
 	{
+		
 		v[num].a2.erase();
 		v[num].a3.erase();
 
@@ -57,21 +58,97 @@ void Questions::FiftyFifty(int num)
 		cout << "\t   \t" << v[num].a2 << endl << "\t   \t" << v[num].a4 << endl;
 
 	}
-
+*/
+	int r;
+	srand((unsigned int)time(0));
+	r = 1 + (rand() % 3);
+	if (v[num].answer[0] == 'A') {
+		for (int i = 0; i < 2; i++) {
+			if (r == 1) {
+				v[num].a2.erase();
+			}
+			else if (r == 2) {
+				v[num].a3.erase();
+				
+			}
+			else if (r == 3) {
+				v[num].a4.erase();
+			}
+			if (r == 3) {
+				r--;
+			}
+			else
+				r++;
+		}
+			cout <<"  "<< v[num].a1 << "\t   \t" << v[num].a2 << endl;
+			cout <<"  "<< v[num].a3 << "\t   \t" << v[num].a4 << endl;
+	}
+	else if (v[num].answer[0] == 'B') {
+		for (int i = 0; i < 2; i++) {
+			if (r == 1)
+				v[num].a1.erase();
+			else if (r == 2)
+				v[num].a3.erase();
+			else if (r == 3)
+				v[num].a4.erase();
+			if (r == 3) {
+				r--;
+			}
+			else
+				r++;
+		}
+		cout << "  " << v[num].a1 << "\t   \t" << v[num].a2 << endl;
+		cout << "  " << v[num].a3 << "\t   \t" << v[num].a4 << endl;
+	}
+	else if (v[num].answer[0] == 'C') {
+		for (int i = 0; i < 2; i++) {
+			if (r == 1)
+				v[num].a1.erase();
+			else if (r == 2)
+				v[num].a2.erase();
+			else if (r == 3)
+				v[num].a4.erase();
+			if (r == 3) {
+				r--;
+			}
+			else
+				r++;
+		}
+		cout << "  " << v[num].a1 << "\t   \t" << v[num].a2 << endl;
+		cout << "  " << v[num].a3 << "\t   \t" << v[num].a4 << endl;
+	}
+	else if (v[num].answer[0] == 'D') {
+		for (int i = 0; i < 2; i++) {
+			
+			if (r == 1)
+				v[num].a1.erase();
+			else if (r == 2)
+				v[num].a2.erase();
+			else if (r == 3)
+				v[num].a3.erase();
+			if (r == 3) {
+				r--;
+			}
+			else
+				r++;
+		}
+		cout << "  " << v[num].a1 << "\t   \t" << v[num].a2 << endl;
+		cout << "  " << v[num].a3 << "\t   \t" << v[num].a4 << endl;
+	}
 }
 
 void Questions::CallFriend(int num)
 {
 	system("cls");
-	cout << "                                Enter Your Friend's Name To Call ^_^                     " << endl;
+	cout << "\t\t                                Enter Your Friend's Name To Call ^_^                     " << endl;
 	cin >> nameFriend;
 	Sleep(300);
 	system("cls");
 	cout << num + 1 << "-" << v[num].Q << "          " << endl;
 
-	cout << v[num].a1 << "\t   \t" << v[num].a2 << endl
-		<< v[num].a3 << "\t   \t" << v[num].a4 << endl;
-	cout << "\t\t                                          Your Friend " << nameFriend << " Suggest  ";
+	cout <<"  "<< v[num].a1 << "\t   \t" << v[num].a2 << endl
+		 <<"  "<< v[num].a3 << "\t   \t" << v[num].a4 << endl;
+	cout << "\t\t                                            Your Friend " << nameFriend << " Suggest  ";
 	Sleep(700);
 	cout << ".";
 	Sleep(700);
@@ -84,18 +161,65 @@ void Questions::CallFriend(int num)
 	cout << ".";
 	Sleep(700);
 	PlaySound(TEXT("callfriend.wav"), NULL, SND_SYNC);
-	cout<<"\t\t\t\t\t\t\t\t\t\t\t\t            "<<nameFriend << " Suggest : "<< v[num].answer[0] << endl;
+	int r;
+		srand((unsigned int)time(0));
+		r = 1 + (rand() % 4);
+	while (true) {
+		if (r == 1) {
+		     	if (!v[num].a1.empty()) {
+		     		cout << "\t\t\t\t\t\t\t\t\t\t\t\t            " << nameFriend << " Suggest : A" << endl;
+		     		break;
+		     	}
+		     	else
+		     	{
+		     		srand((unsigned int)time(0));
+		     		r = 1 + (rand() % 4);
+		     	}
+		     }
+		else if (r == 2) {
+		     	if (!v[num].a2.empty()) {
+		     		cout << "\t\t\t\t\t\t\t\t\t\t\t\t            " << nameFriend << " Suggest : B" << endl;
+		     		break;
+		     	}
+		     	else {
+		     		srand((unsigned int)time(0));
+		     		r = 1 + (rand() % 4);
+		     	}
+		     }
+		else if (r == 3) {
+		     	if (!v[num].a3.empty()) {
+		     		cout << "\t\t\t\t\t\t\t\t\t\t\t\t            " << nameFriend << " Suggest : C" << endl;
+		     		break;
+		     	}
+		     	else {
+		     		srand((unsigned int)time(0));
+		     		r = 1 + (rand() % 4);
+		     	}
+		     }
+		else if (r == 4) {
+		     	if (!v[num].a4.empty()) {
+		     		cout << "\t\t\t\t\t\t\t\t\t\t\t\t            " << nameFriend << " Suggest : D" << endl;
+		     		break;
+		     	}
+		     	else {
+		     		srand((unsigned int)time(0));
+		     		r = 1 + (rand() % 4);
+		     	}
+		     }
+	}
 	PlaySound(TEXT("Done.wav"), NULL, SND_SYNC);
 
 }
 
 void Questions::AudienceOpinion(int num)
 {
+	int A, B, C, D, r;
+	int total =100;
 	system("cls");
 	cout << num + 1 << "-" << v[num].Q << "          " << endl;
 
-	cout << v[num].a1 << "\t   \t" << v[num].a2 << endl
-		<< v[num].a3 << "\t   \t" << v[num].a4 << endl;
+	cout <<"  "<< v[num].a1 << "\t   \t" << v[num].a2 << endl
+		 <<"  "<< v[num].a3 << "\t   \t" << v[num].a4 << endl;
 	cout << "\t\t                                          Audience voting  " ;
 	Sleep(700);
 	cout << ".";
@@ -108,12 +232,154 @@ void Questions::AudienceOpinion(int num)
 	Sleep(700);
 	cout << ".";
 	Sleep(700);
-	PlaySound(TEXT("peopleVoting.wav"), NULL, SND_SYNC);
-	cout <<"\t\t\t\t\t\t\t\t\t\t\t                          Audience choose:" <<v[num].answer[0] << endl;
-	PlaySound(TEXT("Done.wav"), NULL, SND_SYNC);
-
+	cout << endl;
 	
+	if (v[num].answer[0] == 'A') {
+		srand((unsigned int)time(0));
+		r = 40 + (rand() % 30);                 // to get value from  40%  to 70% ( the right qus)  
+		A = r;
 
+		r = 100 - A ;
+		if (!v[num].a2.empty()) {
+			srand((unsigned int)time(0));
+			r = rand() % r;
+			B = r;
+		}
+		else {
+			B = 0;
+		}
+			r = 100 - (A + B);
+		if (!v[num].a3.empty()) {
+			srand((unsigned int)time(0));
+			r = rand() % r;
+			C = r;
+		}
+		else {
+			C = 0;
+		}
+			r = 100 - (A + B + C);
+		if (!v[num].a4.empty()) {
+			D = r;
+		}
+		else {
+			D = 0;
+		}
+		if (A + B + C + D != total) {
+			total -= (A + B + C + D);
+			A += total;
+		}
+	}
+
+	else if (v[num].answer[0] == 'B') {
+		srand((unsigned int)time(0));
+		r = 40 + (rand() % 30);
+		B = r;
+
+			r = 100 - B;
+		if (!v[num].a1.empty())
+		{
+			srand((unsigned int)time(0));
+			r = rand() % r;
+			A = r;
+		}
+		else {
+			A = 0;
+		}
+			r = 100 - (A + B);
+		if (!v[num].a3.empty()) {
+			srand((unsigned int)time(0));
+			r = rand() % r;
+			C = r;
+		}
+		else {
+			C = 0;
+		}
+			r = 100 - (A + B + C);
+		if (!v[num].a4.empty()) {
+			D = r;
+		}
+		else {
+			D = 0;
+		}
+
+		if (A + B + C + D != total) {
+			total -= (A + B + C + D);
+			B += total;
+		}
+	}
+	else if (v[num].answer[0] == 'C') {
+		srand((unsigned int)time(0));
+		r = 40 + (rand() % 30);
+		C = r;
+
+		r = 100 - C;
+		if (!v[num].a1.empty()) {
+			srand((unsigned int)time(0));
+			r = rand() % r;
+			A = r;
+		}
+		else {
+			A = 0;
+		}
+		r = 100 - (A + C);
+		if (!v[num].a2.empty()) {
+			srand((unsigned int)time(0));
+			r = rand() % r;
+			B = r;
+		}
+		else {
+			B = 0;
+		}
+			r = 100 - (A + B + C);
+		if (!v[num].a4.empty()) {
+			D = r;
+		}
+		else {
+			D = 0;
+		}
+		if (A + B + C + D != total) {
+			total -= (A + B + C + D);
+			C += total;
+		}
+	}
+	else if (v[num].answer[0] == 'D') {
+		srand((unsigned int)time(0));
+		r = 40 + (rand() % 30);
+		D = r;
+
+		r = 100 - D;
+		if (!v[num].a4.empty()) {
+			srand((unsigned int)time(0));
+			r = rand() % r;
+			A = r;
+		}
+		else {
+			A = 0;
+		}
+		r = 100 - (A + D);
+		if (!v[num].a4.empty()) {
+			srand((unsigned int)time(0));
+			r = rand() % r;
+			B = r;
+		}
+		else {
+			B = 0;
+		}
+			r = 100 - (A + B + D);
+		if (!v[num].a4.empty()) {
+			C = r;
+		}
+		else {
+			C = 0;
+		}
+		if (A + B + C + D != total) {
+			total -= (A + B + C + D);
+			D += total;
+		}
+	}
+	PlaySound(TEXT("peopleVoting.wav"), NULL, SND_SYNC);
+	cout << "\t \t \t \t \t  A= " << A << "%" << "\t \t B=" << B << "%" << "\t \t C=" << C << "%" << "\t \t D=" << D << "%"<<endl;
+	PlaySound(TEXT("Done.wav"), NULL, SND_SYNC);
 }
 
 void Questions::MillionaireQuestions()
@@ -125,11 +391,19 @@ void Questions::MillionaireQuestions()
 	for (int i = 0; i < v.size(); i++) {
 		system("color FA");
 		system("cls");
-		cout << i + 1 << "-" << v[i].Q << "          " << endl;
-		cout << v[i].a1 << "\t   \t" << v[i].a2 << endl
-			<< v[i].a3 << "\t   \t" << v[i].a4 << endl;
-		PlaySound(TEXT("next.wav"), NULL, SND_SYNC);
-
+		if (i == 4 || i == 9 || i == 14) {
+			system("color F9");
+			cout << i + 1 << "-" << v[i].Q << "          " << endl;
+			cout << "   " << v[i].a1 << "\t   \t" << v[i].a2 << endl
+				 << "   " << v[i].a3 << "\t   \t" << v[i].a4 << endl;
+			PlaySound(TEXT("next.wav"), NULL, SND_SYNC);
+		}
+		else {
+			cout << i + 1 << "-" << v[i].Q << "          " << endl;
+			cout << "   " << v[i].a1 << "\t   \t" << v[i].a2 << endl
+				 << "   " << v[i].a3 << "\t   \t" << v[i].a4 << endl;
+			PlaySound(TEXT("next.wav"), NULL, SND_SYNC);
+		}
 		
 		if (gotohelp <= 2)
 		{
@@ -143,7 +417,8 @@ void Questions::MillionaireQuestions()
 						help(i);
 						gotohelp++;
 						if (gotohelp <= 2) {
-							cout << endl << "\t\t\t\t        ^_^  IF YOU Want more Help again Parss 'Y' else Press 'N'  ^_^" << endl;
+
+							cout << endl << "\t\t\t\t     ^_^  IF YOU Want more Help again Parss 'Y' else Press 'N'  ^_^" << endl;
 							PlaySound(TEXT("help.wav"), NULL, SND_SYNC);
 						}
 						else
@@ -153,8 +428,8 @@ void Questions::MillionaireQuestions()
 					{
 						system("cls");
 						cout << i + 1 << "-" << v[i].Q << "          " << endl;
-						cout << v[i].a1 << "\t   \t" << v[i].a2 << endl
-							<< v[i].a3 << "\t   \t" << v[i].a4 << endl;
+						cout << "   " << v[i].a1 << "\t   \t" << v[i].a2 << endl
+							<< "   " << v[i].a3 << "\t   \t" << v[i].a4 << endl;
 						break;
 					}
 					else {
@@ -172,6 +447,7 @@ void Questions::MillionaireQuestions()
 				if (choose == v[i].answer[0]) {               // correct ans
 					system("cls");
 					system("color F2");
+					cout << endl << endl << endl << endl;
 					cout << "\t \t \t \t \t       congrats, you have " << million.front() << "$" << endl;
 					PlaySound(TEXT("rightAns.wav"), NULL, SND_SYNC);
 					if (i < 14) {                             // not to appear in last qus
@@ -187,6 +463,24 @@ void Questions::MillionaireQuestions()
 					{      // cross all rounds right $$$
 						system("cls");
 						system("color FA");
+						for (int i = 0; i < 3; i++) {
+							cout << endl << endl << endl << endl << endl << endl;
+							cout << "          $$$$$$                                         " << endl;
+							cout << "         $$$$$$$  $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$" << endl;
+							cout << "      $$$$$$$$$$  $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$" << endl;
+							cout << "     $$$$$$$$$$$  $$$$$        $$$$$ $$$$$        $$$$$ $$$$$        $$$$$ $$$$$        $$$$$ $$$$$        $$$$$ $$$$$        $$$$$" << endl;
+							cout << "       $$$$$$$$$  $$$$$        $$$$$ $$$$$        $$$$$ $$$$$        $$$$$ $$$$$        $$$$$ $$$$$        $$$$$ $$$$$        $$$$$" << endl;
+							cout << "          $$$$$$  $$$$$        $$$$$ $$$$$        $$$$$ $$$$$        $$$$$ $$$$$        $$$$$ $$$$$        $$$$$ $$$$$        $$$$$" << endl;
+							cout << "          $$$$$$  $$$$$        $$$$$ $$$$$        $$$$$ $$$$$        $$$$$ $$$$$        $$$$$ $$$$$        $$$$$ $$$$$        $$$$$" << endl;
+							cout << "          $$$$$$  $$$$$        $$$$$ $$$$$        $$$$$ $$$$$        $$$$$ $$$$$        $$$$$ $$$$$        $$$$$ $$$$$        $$$$$" << endl;
+							cout << "          $$$$$$  $$$$$        $$$$$ $$$$$        $$$$$ $$$$$        $$$$$ $$$$$        $$$$$ $$$$$        $$$$$ $$$$$        $$$$$" << endl;
+							cout << "          $$$$$$  $$$$$        $$$$$ $$$$$        $$$$$ $$$$$        $$$$$ $$$$$        $$$$$ $$$$$        $$$$$ $$$$$        $$$$$" << endl;
+							cout << "          $$$$$$  $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$" << endl;
+							cout << "          $$$$$$  $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$" << endl;
+							cout << "          $$$$$$  										 " << endl;
+							Sleep(700);
+							system("cls");
+						}
 						cout << endl << endl << endl << endl;;
 						cout << "\t\t\t\t\t                  You are a millionare $                             " << endl;
 						cout << "\t\t\t\t\t              __________________________________                   " << endl;
@@ -197,20 +491,21 @@ void Questions::MillionaireQuestions()
 						cout << "\t\t\t\t\t             |                                  |					" << endl;
 						cout << "\t\t\t\t\t             |                                  |					" << endl;
 						cout << "\t\t\t\t\t             |----------------------------------|					" << endl;
-						cout << "\t\t\t\t\t            ******     *****  **  *****     ******				    " << endl;
-						cout << "\t\t\t\t\t        ***                                        ***			    " << endl;
-						cout << "\t\t\t\t\t         ********************************************			    " << endl;
-						cout << "\t\t\t\t\t       /         *                         *         \				" << endl;
+						cout << "\t\t\t\t\t           *******     *****  **  *****     *******				    " << endl;
+						cout << "\t\t\t\t\t       ***                                          ***			    " << endl;
+						cout << "\t\t\t\t\t        **********************************************			    " << endl;
+						cout << "                 |         *                         *         |          " << endl;
 						cout << "\t\t\t\t\t       |        ***                       ***        |       	    " << endl;
 						cout << "\t\t\t\t\t    (  |       *****                     *****       |  )	 	    " << endl;
 						cout << "\t\t\t\t\t  (    |        ***                       ***        |    )  		" << endl;
 						cout << "\t\t\t\t\t    (  |         *                         *         |  )	           " << endl;
+						cout << "\t\t\t\t\t       |                                             |			    " << endl;
 						cout << "\t\t\t\t\t       |                     ^^                      |			    " << endl;
 						cout << "\t\t\t\t\t       |                ^^ ^^  ^^  ^^                |			    " << endl;
-						cout << "\t\t\t\t\t        \\          \__________________/           //				" << endl;
-						cout << "\t\t\t\t\t         \\                                       //				" << endl;
-						cout << "\t\t\t\t\t          \\                                     //			 	" << endl;
-						cout << "\t\t\t\t\t            |____--_____--_________--____--_____|				    " << endl << endl;
+						cout << "\t\t\t\t\t       \\            ^^  ^^  ^^  ^^  ^^             //				" << endl;
+						cout << "\t\t\t\t\t        \\                                         //				" << endl;
+						cout << "\t\t\t\t\t         \\                                       //			 	" << endl;
+						cout << "\t\t\t\t\t           |_____--_____--_________--____--______|				    " << endl << endl;
 						cout << "\t\t\t\t\t                    * Congratulations *                           " << endl;
 						PlaySound(TEXT("million.wav"), NULL, SND_SYNC);
 					}
@@ -224,7 +519,7 @@ void Questions::MillionaireQuestions()
 				{
 					system("cls");
 					system("color FC");
-					if (count < 5) {                                                    //lose before 1000$
+					if (count < 5) {                                                             //lose before 1000$
 						cout << "   \t\t                               Sorry Wrong Answer!          " << endl;
 						cout << "   \t\t                                  You have 0 $              " << endl;
 						cout << "   \t\t                              Thank you for playing ..        " << endl;
@@ -336,11 +631,14 @@ void Questions::MillionaireQuestions()
 			break; 
      }
 }
-void Questions::help(int num)
+
+void Questions::help(int num)                // num -> question index
 {
 	if (toloop <= 3) {
 		while (true) {
+			system("cls");
 			cout << "\n\n \t\t ";
+
 			if (fivefive != 1)
 			{
 				cout << "   ^_^  Press 'F' TO  50/50 ^_^ ";
@@ -360,9 +658,9 @@ void Questions::help(int num)
 			PlaySound(TEXT("help.wav"), NULL, SND_SYNC);
 
 			cin >>test;
-			if (test == 'f' || test == 'F'&& fivefive < 1)
+			if (test == 'f' || test == 'F' && fivefive < 1)
 			{
-				FiftyFifty(num);
+				FiftyFifty(num); 
 				PlaySound(TEXT("fifty.wav"), NULL, SND_SYNC);
 				fivefive++;
 				break;
@@ -393,9 +691,10 @@ void Questions::help(int num)
 
 bool Questions::ContinueVSwithdrawal()
 {
+
 	cout << endl << endl << endl;
 	cout << "\t\t\t\t\t  Do you want to continue OR withdrawal !" << endl;
-	cout << "\t\t\t\t\t Continue press '+' , Withdraw press '-'" << endl;
+	cout << "\t\t\t\t\t  Continue press '+' , Withdraw press '-'" << endl;
 	char x;
 	while (true) {
 		cin >> x;
@@ -412,7 +711,7 @@ bool Questions::ContinueVSwithdrawal()
 			}
 		}
 		else {
-			cout << "\t\t\t\   you should enter '+' to continue OR '-' to withdrawal !" << endl;
+			cout << "\t\t\t   you should enter '+' to continue OR '-' to withdrawal !" << endl;
 			PlaySound(TEXT("Buzz .wav"), NULL, SND_SYNC);
 		}
 	}
@@ -442,11 +741,12 @@ void Questions::Getquestions()
 	
 	ifstream file;
 	string s;
+
 	int x, count1, count2;
 	file.open("Easyquestions.txt");
-	srand((unsigned int)time(0));
-	x = rand() % 24;
-	count1 = x + 5;
+	srand((unsigned int)time(0));    // change number 
+	x = rand()% 24;  // 1
+	count1 = x + 5;  // 6 
 	count2 = 0;
 	while (!file.eof()) {
 		if (count2 < x) {
@@ -465,7 +765,7 @@ void Questions::Getquestions()
 			getline(file, qus.a3);
 			getline(file, qus.a4);
 			getline(file, qus.answer);
-			count2++;
+			count2++;    
 			v.push_back(qus);
 			if (count2 == count1) {
 				break;
