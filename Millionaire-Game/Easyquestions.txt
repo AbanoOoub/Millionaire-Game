@@ -1,33 +1,21 @@
-what is 4+4 ?
-A- 8
-B- 2
-C- 3
-D- 9
-A
-what is 4*4 ?
-A- 16
-B- 5
-C- 1
-D- 8
-A
-what is 4/4 ?
-A- 0
-B- 1
-C- 3
-D- 4
-B
+Which of the following symbols means 'greater than'?
+A- !
+B- #
+C- >
+D- )
+C
 How many sides on a hexagon?
 A- 4 
 B- 6 
 C- 11
 D- 8 
-B 
-Which disease devastated livestock across the UK during 2001?
-A- Hand-and-foot
-B- Foot-in-mouth
-C- Hand-to-mouth
-D- Foot-and-mouth
 B
+Queen Nefertiti was once ruler of which country?
+A- Holland
+B- Greece
+C- Persia
+D- Egypt
+D
 Which of these kills its victims by constriction?
 A- Andalucia   
 B- Andypandy   
@@ -39,6 +27,12 @@ A- Tables
 B- Gables 
 C- Stables
 D- Cables 
+D
+In a standard American football game, how many players are allowed on the field for each team?
+A- 6 
+B- 7 
+C- 9 
+D- 11
 D
 Which of these would a film actor like to receive?
 A- Oliver  
@@ -52,6 +46,12 @@ B- France
 C- Spain 
 D- Wales 
 A
+How many colors are there in a rainbow? 
+A- 7
+B- 8
+C- 4
+D- 1
+A
 Which word follows 'North' and 'South' to give the names of two continents?
 A- Asia     
 B- America  
@@ -63,12 +63,6 @@ A- Madagascar
 B- Cuba      
 C- Germany   
 D- Jamaica   
-C
-Which of the following symbols means 'greater than'?
-A- !
-B- #
-C- >
-D- )
 C
 Water that falls from the sky as drops is called...?
 A- Rain     
@@ -88,18 +82,24 @@ B- The doctor
 C- The heart 
 D- The brain 
 A
-How many sides on a hexagon?   
-A- 4
-B- 6
-C- 11
-D- 8
-B
 A whale is a ..... ?
 A- Amphibion
 B- Bird     
 C- Mammal   
 D- Fish     
 C
+Where should choking victims place their hands to indicate to others that they need help?
+A- Over the eyes    
+B- On the knees     
+C- Around the throat
+D- On the hips      
+C
+Which disease devastated livestock across the UK during 2001?
+A- Hand-and-foot 
+B- Foot-in-mouth 
+C- Hand-to-mouth 
+D- Foot-and-mouth
+B
 A popular expression goes "A bird in the hand is worth two in the" what?
 A- Table 
 B- Bush  
@@ -130,17 +130,11 @@ B- Donald Duck
 C- Bugs Bunny   
 D- Pluto the Dog
 C
-In a standard American football game, how many players are allowed on the field for each team?
-A- 6
-B- 7
-C- 9
-D- 11
-D
 How many holes are there in a full round of golf?                      
 A- 100
-B- 30
-C- 18
-D- 10
+B- 30 
+C- 18 
+D- 10 
 C
 What is the regulation height for a basketball hoop?                       
 A- 10 feet
@@ -149,30 +143,32 @@ C- 30 feet
 D- 76 feet
 A
 How many soccer players should be on the field at the same time?                       
-A- 8
+A- 8 
 B- 22
-C- 6
+C- 6 
 D- 17
 B
 What is the chemical formula for ozone? 
-A- I
+A- I    
 B- H2SO4
-C- O2
-D- O3
+C- O2   
+D- O3   
 D
-How many colors are there in a rainbow? 
-A- 7
-B- 8
-C- 4
-D- 1
-A
 What is the first element on the periodic table?
 A- Oxygen  
 B- Hydrogen
 C- Iodine  
 D- Sulpher 
 B
-
-
-
-
+How many players has a hockey team got on the ice?	
+A- Six players  
+B- seven players
+C- nine players 
+D- five players 
+A
+Where in the body would you find a metatarsal bone?
+A- Hand 
+B- Skull
+C- Foot 
+D- Spine
+C

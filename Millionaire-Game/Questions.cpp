@@ -63,7 +63,7 @@ void Questions::FiftyFifty(int num)
 	srand((unsigned int)time(0));
 	r = 1 + (rand() % 3);
 	if (v[num].answer[0] == 'A') {
-		for (int i = 0; i < 2; i++) {
+		for (int i = 0; i < 2; i++) {          //to remove 2 choose
 			if (r == 1) {
 				v[num].a2.erase();
 			}
@@ -236,7 +236,7 @@ void Questions::AudienceOpinion(int num)
 	
 	if (v[num].answer[0] == 'A') {
 		srand((unsigned int)time(0));
-		r = 40 + (rand() % 30);                 // to get value from  40%  to 70% ( the right qus)  
+		r = 40 + (rand() % 30);                 // to get value from  40%  to 70% (the right ans)  
 		A = r;
 
 		r = 100 - A ;
@@ -385,13 +385,13 @@ void Questions::AudienceOpinion(int num)
 void Questions::MillionaireQuestions()
 {
 	int count = 0;         // wich qus 
-	int gotohelp = 0;     //gotohelp to take 3 help only
+	int gotohelp = 0;     // to take 3 helps only
 	char choose, ch;
 	bool out=false;
 	for (int i = 0; i < v.size(); i++) {
 		system("color FA");
 		system("cls");
-		if (i == 4 || i == 9 || i == 14) {
+		if (i == 4 || i == 9 || i == 14) {        
 			system("color F9");
 			cout << i + 1 << "-" << v[i].Q << "          " << endl;
 			cout << "   " << v[i].a1 << "\t   \t" << v[i].a2 << endl
@@ -444,13 +444,13 @@ void Questions::MillionaireQuestions()
 			cin >> choose;
 			choose = toupper(choose);
 			if (choose == 'A' || choose == 'B' || choose == 'C' || choose == 'D') {
-				if (choose == v[i].answer[0]) {               // correct ans
+				if (choose == v[i].answer[0]) {                                   // correct ans
 					system("cls");
 					system("color F2");
 					cout << endl << endl << endl << endl;
 					cout << "\t \t \t \t \t       congrats, you have " << million.front() << "$" << endl;
 					PlaySound(TEXT("rightAns.wav"), NULL, SND_SYNC);
-					if (i < 14) {                             // not to appear in last qus
+					if (i < 14) {                                                 // not to appear in last qus
 						system("cls");
 						system("color F0");
 						if (!ContinueVSwithdrawal()) {
@@ -460,7 +460,7 @@ void Questions::MillionaireQuestions()
 						}
 					}
 					else
-					{      // cross all rounds right $$$
+					{                                // cross all rounds right $$$
 						system("cls");
 						system("color FA");
 						for (int i = 0; i < 3; i++) {
@@ -745,8 +745,8 @@ void Questions::Getquestions()
 	int x, count1, count2;
 	file.open("Easyquestions.txt");
 	srand((unsigned int)time(0));    // change number 
-	x = rand()% 24;  // 1
-	count1 = x + 5;  // 6 
+	x = rand()% 24;  
+	count1 = x + 5;  
 	count2 = 0;
 	while (!file.eof()) {
 		if (count2 < x) {
@@ -775,7 +775,7 @@ void Questions::Getquestions()
 	file.close();
 	file.open("Mediumquestions.txt");
 	srand((unsigned int)time(0));
-	x = rand() % 8;
+	x = rand() % 13;
 	count1 = x + 5;
 	count2 = 0;
 	while (!file.eof()) {
@@ -805,7 +805,7 @@ void Questions::Getquestions()
 	file.close();
 	file.open("Hardquestions.txt");
 	srand((unsigned int)time(0));
-	x = rand() % 15;
+	x = rand() % 20;
 	count1 = x + 5;
 	count2 = 0;
 	while (!file.eof()) {
