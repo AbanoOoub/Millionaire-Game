@@ -162,49 +162,49 @@ void Questions::CallFriend(int num)
 	Sleep(700);
 	PlaySound(TEXT("callfriend.wav"), NULL, SND_SYNC);
 	int r;
+	while (true) {
 		srand((unsigned int)time(0));
 		r = 1 + (rand() % 4);
-	while (true) {
 		if (r == 1) {
 		     	if (!v[num].a1.empty()) {
 		     		cout << "\t\t\t\t\t\t\t\t\t\t\t\t            " << nameFriend << " Suggest : A" << endl;
 		     		break;
 		     	}
-		     	else
+		     	/*else
 		     	{
 		     		srand((unsigned int)time(0));
 		     		r = 1 + (rand() % 4);
-		     	}
+		     	}*/
 		     }
 		else if (r == 2) {
 		     	if (!v[num].a2.empty()) {
 		     		cout << "\t\t\t\t\t\t\t\t\t\t\t\t            " << nameFriend << " Suggest : B" << endl;
 		     		break;
 		     	}
-		     	else {
+		     	/*else {
 		     		srand((unsigned int)time(0));
 		     		r = 1 + (rand() % 4);
-		     	}
+		     	}*/
 		     }
 		else if (r == 3) {
 		     	if (!v[num].a3.empty()) {
 		     		cout << "\t\t\t\t\t\t\t\t\t\t\t\t            " << nameFriend << " Suggest : C" << endl;
 		     		break;
 		     	}
-		     	else {
+		     	/*else {
 		     		srand((unsigned int)time(0));
 		     		r = 1 + (rand() % 4);
-		     	}
+		     	}*/
 		     }
 		else if (r == 4) {
 		     	if (!v[num].a4.empty()) {
 		     		cout << "\t\t\t\t\t\t\t\t\t\t\t\t            " << nameFriend << " Suggest : D" << endl;
 		     		break;
 		     	}
-		     	else {
+		     	/*else {
 		     		srand((unsigned int)time(0));
 		     		r = 1 + (rand() % 4);
-		     	}
+		     	}*/
 		     }
 	}
 	PlaySound(TEXT("Done.wav"), NULL, SND_SYNC);
@@ -411,6 +411,7 @@ void Questions::MillionaireQuestions()
 				PlaySound(TEXT("help.wav"), NULL, SND_SYNC);
 
 				while (true) {
+					cout << "Choose: ";
 					cin >> ch;
 					if (ch == 'y' || ch == 'Y')
 					{
@@ -462,7 +463,7 @@ void Questions::MillionaireQuestions()
 					else
 					{                                // cross all rounds right $$$
 						system("cls");
-						system("color FA");
+						system("color F2");
 						for (int i = 0; i < 3; i++) {
 							cout << endl << endl << endl << endl << endl << endl;
 							cout << "          $$$$$$                                         " << endl;
@@ -482,8 +483,8 @@ void Questions::MillionaireQuestions()
 							system("cls");
 						}
 						cout << endl << endl << endl << endl;;
-						cout << "\t\t\t\t\t                  You are a millionare $                             " << endl;
-						cout << "\t\t\t\t\t              __________________________________                   " << endl;
+						cout << "\t\t\t\t\t                    You are a millionare $                           " << endl;
+						cout << "\t\t\t\t\t              __________________________________                     " << endl;
 						cout << "\t\t\t\t\t             |                                  |    				" << endl;
 						cout << "\t\t\t\t\t             |                                  |					" << endl;
 						cout << "\t\t\t\t\t             |                                  |					" << endl;
@@ -494,19 +495,19 @@ void Questions::MillionaireQuestions()
 						cout << "\t\t\t\t\t           *******     *****  **  *****     *******				    " << endl;
 						cout << "\t\t\t\t\t       ***                                          ***			    " << endl;
 						cout << "\t\t\t\t\t        **********************************************			    " << endl;
-						cout << "                 |         *                         *         |          " << endl;
+						cout <<" \t\t\t\t\t       |         *                         *         |               " << endl;
 						cout << "\t\t\t\t\t       |        ***                       ***        |       	    " << endl;
 						cout << "\t\t\t\t\t    (  |       *****                     *****       |  )	 	    " << endl;
 						cout << "\t\t\t\t\t  (    |        ***                       ***        |    )  		" << endl;
-						cout << "\t\t\t\t\t    (  |         *                         *         |  )	           " << endl;
+						cout << "\t\t\t\t\t    (  |         *                         *         |  )	        " << endl;
 						cout << "\t\t\t\t\t       |                                             |			    " << endl;
 						cout << "\t\t\t\t\t       |                     ^^                      |			    " << endl;
 						cout << "\t\t\t\t\t       |                ^^ ^^  ^^  ^^                |			    " << endl;
 						cout << "\t\t\t\t\t       \\            ^^  ^^  ^^  ^^  ^^             //				" << endl;
 						cout << "\t\t\t\t\t        \\                                         //				" << endl;
-						cout << "\t\t\t\t\t         \\                                       //			 	" << endl;
+						cout << "\t\t\t\t\t         \\                                       //			    	" << endl;
 						cout << "\t\t\t\t\t           |_____--_____--_________--____--______|				    " << endl << endl;
-						cout << "\t\t\t\t\t                    * Congratulations *                           " << endl;
+						cout << "\t\t\t\t\t                    * Congratulations *                              " << endl;
 						PlaySound(TEXT("million.wav"), NULL, SND_SYNC);
 					}
 
@@ -623,12 +624,28 @@ void Questions::MillionaireQuestions()
 				}
 			}
 			else {
-				cout << "You should enter A or B or C or D !" << endl;
+				cout << "You should enter";
+				if (!v[i].a1.empty())
+				{    
+					cout << "(A) ";
+				}
+				if (!v[i].a2.empty()) {
+					cout << "(B) ";
+				}
+				if (!v[i].a3.empty())
+				{
+					cout << "(C) ";
+				}
+				if (!v[i].a4.empty()) {
+					cout << "(D) ";
+				}
+				cout <<"!"<< endl;
 				PlaySound(TEXT("Buzz .wav"), NULL, SND_SYNC);
 			}
+				cout << endl << "Your Answer Is :  ";
 		}
 		if(out)
-			break; 
+		    break; 
      }
 }
 
@@ -656,7 +673,7 @@ void Questions::help(int num)                // num -> question index
 			}
 			cout << endl;
 			PlaySound(TEXT("help.wav"), NULL, SND_SYNC);
-
+			cout << "Choose: ";
 			cin >>test;
 			if (test == 'f' || test == 'F' && fivefive < 1)
 			{
@@ -697,6 +714,7 @@ bool Questions::ContinueVSwithdrawal()
 	cout << "\t\t\t\t\t  Continue press '+' , Withdraw press '-'" << endl;
 	char x;
 	while (true) {
+		cout << "Choose: ";
 		cin >> x;
 		if (x == '+' || x == '-') {
 			if (x == '+') {
@@ -711,7 +729,7 @@ bool Questions::ContinueVSwithdrawal()
 			}
 		}
 		else {
-			cout << "\t\t\t   you should enter '+' to continue OR '-' to withdrawal !" << endl;
+			cout << "\t\t\t\t   you should enter '+' to continue OR '-' to withdrawal !" << endl;
 			PlaySound(TEXT("Buzz .wav"), NULL, SND_SYNC);
 		}
 	}
@@ -738,13 +756,12 @@ void Questions::List()
 
 void Questions::Getquestions()
 {
-	
 	ifstream file;
 	string s;
 
 	int x, count1, count2;
 	file.open("Easyquestions.txt");
-	srand((unsigned int)time(0));    // change number 
+	srand((unsigned int)time(0));                    // change number 
 	x = rand()% 24;  
 	count1 = x + 5;  
 	count2 = 0;

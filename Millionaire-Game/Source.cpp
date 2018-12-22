@@ -1,8 +1,8 @@
 #include<iostream>
-#include<Windows.h>           
+#include<Windows.h>           //sound
 #include<MMSystem.h>         // sound
 #include<string>
-#include<fstream>
+#include<fstream>           //files
 #include<ctime>
 #include"Questions.h"
 using namespace std;
@@ -11,11 +11,10 @@ void Welcome();
 void MillionareStart();
 void text_animation(char a[100]);
 void main() {
-	//Welcome();
-	//ques.List();
+	Welcome();
+	ques.List();
 	ques.Getquestions();
 	MillionareStart();
-	
 }
 
 void Welcome()
